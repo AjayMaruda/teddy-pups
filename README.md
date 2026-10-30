@@ -13,3 +13,4 @@ An exact, high-fidelity replica and clone of [TeddyPups U.A.E.](https://puppy.in
 - `main`: Production-ready branch.
 - `develop`: Primary integration and staging branch.
 - `feat/*`: Feature branches branched from and merged back into `develop`.
+
