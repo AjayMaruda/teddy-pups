@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-toffee: #c2622b;
+  --color-toffee-deep: #a24a1a;
+  --color-toffee-ink: #8e3f15;
+  --color-honey: #f2be6b;
+  --color-honey-soft: #fbe3b4;
+  --color-cocoa: #2a170e;
+  --color-cocoa-soft: #5a3a28;
+  --color-milk: #fffdf8;
+  --color-sky: #bfddf5;
+  --color-sky-deep: #2f6e9e;
+  --color-blush: #f9cdbf;
+
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  --header-h: 4.75rem;
+  accent-color: var(--color-toffee-deep);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --header-h: 4rem;
+  }
+}
+
+body {
+  background-color: var(--color-milk);
+  color: var(--color-cocoa);
+  font-family: var(--font-figtree), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.gutter {
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* Typography Helpers */
+.font-plush {
+  font-family: var(--font-fraunces), serif;
+}
+
+.font-scrawl {
+  font-family: var(--font-shantell), cursive;
+}
+
+.text-giant {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.text-big {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.15;
+}
+
+.text-lede {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Custom Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  padding: 0.85rem 1.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-color: var(--color-toffee);
+  color: var(--color-milk);
+  box-shadow: 0 4px 12px rgba(194, 98, 43, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-toffee-deep);
+  box-shadow: 0 6px 16px rgba(194, 98, 43, 0.35);
+}
+
+.btn-whatsapp {
+  background-color: #25d366;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+  background-color: #20bd5a;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+}
+
+.btn-ghost {
+  background-color: rgba(42, 23, 14, 0.06);
+  color: var(--color-cocoa);
+}
+
+.btn-ghost:hover {
+  background-color: rgba(42, 23, 14, 0.12);
+}
+
+/* Chip Badge */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background-color: #fff;
+  border: 1.5px solid rgba(42, 23, 14, 0.12);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-cocoa);
+}
+
+/* Chapter Label */
+.tp-chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--color-toffee-ink);
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.tp-chapter__n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background-color: var(--color-honey);
+  color: var(--color-cocoa);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Board / Paper cards */
+.tp-board {
+  background-color: #fff;
+  border: 2px solid var(--color-cocoa);
+  box-shadow: 4px 4px 0px var(--color-cocoa);
+  border-radius: 1.5rem;
+}
+
+.tp-paper {
+  background-color: #fff;
+  border: 1.5px solid rgba(42, 23, 14, 0.15);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 8px 24px rgba(42, 23, 14, 0.05);
+}
+
+/* Polaroid Card */
+.tp-polaroid {
+  display: block;
+  position: relative;
+  background-color: #fff;
+  padding: 0.75rem 0.75rem 2.25rem 0.75rem;
+  border-radius: 0.35rem;
+  box-shadow: 0 10px 25px -5px rgba(42, 23, 14, 0.12), 0 8px 10px -6px rgba(42, 23, 14, 0.1);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.tp-polaroid:hover {
+  transform: rotate(0deg) scale(1.04) translateY(-4px);
+  box-shadow: 0 20px 35px -5px rgba(42, 23, 14, 0.18);
+  z-index: 10;
+}
+
+.tp-polaroid__photo {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.2rem;
+  background-color: #f3eee6;
+}
+
+/* Washi Tape */
+.tp-tape {
+  position: absolute;
+  top: -0.65rem;
+  width: 4rem;
+  height: 1.25rem;
+  background-color: var(--tape, #f6d79a);
+  opacity: 0.88;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+  transform: rotate(-3deg);
+}
+
+.tp-tape--center {
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+/* Scalloped Header Hem */
+.tp-header__hem {
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Sketch Card Mask & Wash */
+.tp-sketch {
+  position: relative;
+  display: block;
+  border-radius: 1.75rem;
+  background-color: #fff;
+  padding: 1rem;
+  border: 1.5px solid rgba(42, 23, 14, 0.12);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.tp-sketch:hover {
+  transform: translateY(-6px) rotate(var(--tilt, 0deg));
+  box-shadow: 0 16px 32px rgba(42, 23, 14, 0.08);
+  border-color: var(--color-toffee);
+}
+
+.tp-sketch__frame {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1.15;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background-color: #faf5ed;
+}
+
+/* Trail Number */
+.tp-trail__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background-color: var(--color-honey);
+  color: var(--color-cocoa);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
