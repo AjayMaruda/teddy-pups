@@ -70,4 +70,3 @@ export interface FAQItem {
     text: string;
   };
 }
-
