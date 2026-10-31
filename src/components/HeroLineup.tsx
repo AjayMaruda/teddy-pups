@@ -26,10 +26,11 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
     breed: "Maltipoo",
     label: "Meet Max, Maltipoo",
     href: "/puppies/maltipoo-max-male",
-    image: "https://puppy.instabizweb.com/media/Z0ToauDx7Eve/5fffe4d022/b942a5_4b8cfb8204d24eadaf524332aba1dc15-mv2.webp",
+    image:
+      "https://puppy.instabizweb.com/media/Z0ToauDx7Eve/5fffe4d022/b942a5_4b8cfb8204d24eadaf524332aba1dc15-mv2.webp",
     alt: "Max, male Maltipoo puppy",
     objectPosition: "53.8% 44.3%",
-    x: "9%",
+    x: "5%",
     w: "8.6rem",
     peek: 0.62,
     tilt: "-5deg",
@@ -41,7 +42,8 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
     breed: "Korean Teacup Maltipoo",
     label: "Meet Korean Teacup Maltipoo, Korean Teacup Maltipoo",
     href: "/puppies/korean-teacup-maltipoo-female",
-    image: "https://puppy.instabizweb.com/media/gAaGwoGej2g6/5523e884dd/b942a5_50f0ae67c9ff437d911597d52a9e63b3-mv2.jpg",
+    image:
+      "https://puppy.instabizweb.com/media/gAaGwoGej2g6/5523e884dd/b942a5_50f0ae67c9ff437d911597d52a9e63b3-mv2.jpg",
     alt: "Female Korean Teacup Maltipoo puppy",
     objectPosition: "52.5% 42.6%",
     x: "22.5%",
@@ -55,7 +57,8 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
     breed: "Korean Teacup Poodle",
     label: "Meet Korean Teacup Poodle, Korean Teacup Poodle",
     href: "/puppies/korean-teacup-poodle-female",
-    image: "https://puppy.instabizweb.com/media/xeMJCapr5vcU/e618c653b2/b942a5_14376a216177484dbbb27995d0f6aeb7-mv2.jpg",
+    image:
+      "https://puppy.instabizweb.com/media/xeMJCapr5vcU/e618c653b2/b942a5_14376a216177484dbbb27995d0f6aeb7-mv2.jpg",
     alt: "Female Korean Teacup Poodle puppy",
     objectPosition: "54.5% 45.7%",
     x: "35%",
@@ -69,7 +72,8 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
     breed: "Maltipoo & Cavapoo",
     label: "Meet Maltipoo & Cavapoo, Maltipoo & Cavapoo",
     href: "/puppies/maltipoo-cavapoo-male",
-    image: "https://puppy.instabizweb.com/media/YQhey4j7uWvZ/3ea10db6c1/b942a5_7ce7e7bd18424b6c8fb16dd30113ade2-mv2.jpg",
+    image:
+      "https://puppy.instabizweb.com/media/YQhey4j7uWvZ/3ea10db6c1/b942a5_7ce7e7bd18424b6c8fb16dd30113ade2-mv2.jpg",
     alt: "Male Maltipoo & Cavapoo puppy",
     objectPosition: "44.7% 29.5%",
     x: "65%",
@@ -83,7 +87,8 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
     breed: "Toy Poodle",
     label: "Meet Toy Poodle, Toy Poodle",
     href: "/puppies/toy-poodle-male-female",
-    image: "https://puppy.instabizweb.com/media/vMu0BPvkAZ-j/c65e53967d/b942a5_0b2c0c0d178c4005acbe28725a5ea573-mv2.jpg",
+    image:
+      "https://puppy.instabizweb.com/media/vMu0BPvkAZ-j/c65e53967d/b942a5_0b2c0c0d178c4005acbe28725a5ea573-mv2.jpg",
     alt: "Toy Poodle puppy",
     objectPosition: "65.4% 44.7%",
     x: "77.5%",
@@ -97,7 +102,8 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
     breed: "Maltipoo",
     label: "Meet Maltipoo, Maltipoo",
     href: "/puppies/maltipoo-female-2",
-    image: "https://puppy.instabizweb.com/media/3WJNmn6VVgVu/732f779474/b942a5_2b5dcece361b4589890ae920c66a1b70-mv2.jpg",
+    image:
+      "https://puppy.instabizweb.com/media/3WJNmn6VVgVu/732f779474/b942a5_2b5dcece361b4589890ae920c66a1b70-mv2.jpg",
     alt: "Female Maltipoo puppy",
     objectPosition: "64.6% 42.3%",
     x: "91%",
@@ -115,7 +121,10 @@ export default function HeroLineup() {
   return (
     <div className="tp-hero__stage select-none">
       {/* Puppy Arched Windows Lineup */}
-      <ul className="tp-lineup" aria-label="Some of the puppies in our showroom">
+      <ul
+        className="tp-lineup"
+        aria-label="Some of the puppies in our showroom"
+      >
         {LINEUP_PUPPIES.map((pup, i) => {
           const isHovered = hoveredIdx === i;
           const style = {
@@ -202,10 +211,7 @@ export default function HeroLineup() {
                 opacity="0"
                 style={{ transformBox: "fill-box", transformOrigin: "center" }}
               />
-              <g
-                data-p="head"
-                transform="translate(0 4) rotate(0 212 100)"
-              >
+              <g data-p="head" transform="translate(0 4) rotate(0 212 100)">
                 {/* Collar */}
                 <path
                   d="M178 146 Q212 162 246 146 L246 154 Q212 170 178 154 Z"

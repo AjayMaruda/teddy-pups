@@ -9,6 +9,7 @@ import PuppyCard from "@/components/PuppyCard";
 import PolaroidCard from "@/components/PolaroidCard";
 import MascotTeddy from "@/components/MascotTeddy";
 import HeroLineup from "@/components/HeroLineup";
+import MeetPupsSection from "@/components/MeetPupsSection";
 import LightboxModal from "@/components/LightboxModal";
 import { PawIcon, WhatsAppIcon } from "@/components/Header";
 import {
@@ -109,37 +110,8 @@ export default function HomePage() {
         <HeroLineup />
       </section>
 
-      {/* SECTION 2: MEET THE PUPS */}
-      <section
-        id="meet-title"
-        className="tp-meet gutter mx-auto max-w-[110rem] py-20 border-t border-cocoa/10"
-      >
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-          <div>
-            <p className="font-scrawl text-sm font-bold text-toffee-ink">
-              Teddy&apos;s favorites
-            </p>
-            <h2 className="font-plush text-big mt-1 font-bold text-cocoa">
-              Meet the pups
-            </h2>
-            <p className="mt-2 text-cocoa-soft">
-              Real puppies, real photos, looking for their families right now.
-            </p>
-          </div>
-          <Link
-            href="/puppies"
-            className="btn btn-ghost shrink-0 self-start sm:self-auto text-sm font-bold text-toffee-deep hover:text-cocoa"
-          >
-            See all available puppies ({puppiesData.length}) →
-          </Link>
-        </div>
-
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {previewPuppies.map((puppy, idx) => (
-            <PuppyCard key={puppy.id} puppy={puppy} tiltIndex={idx} />
-          ))}
-        </div>
-      </section>
+      {/* SECTION 2: MEET THE PUPS (Scroll Pinned Horizontal Door Carousel) */}
+      <MeetPupsSection puppies={puppiesData} />
 
       {/* SECTION 3: TWO WAYS TO MEET YOUR PUPPY */}
       <section
