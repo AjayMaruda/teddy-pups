@@ -205,7 +205,9 @@ export default function Header() {
                       }`}
                     >
                       <span>{link.label}</span>
-                      {isActive && <PawIcon className="size-7 text-toffee shrink-0" />}
+                      {isActive && (
+                        <PawIcon className="size-7 text-toffee shrink-0" />
+                      )}
                     </Link>
                   </li>
                 );
