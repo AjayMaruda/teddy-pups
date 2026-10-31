@@ -6,6 +6,7 @@ import Image from "next/image";
 
 interface LineupPuppy {
   name: string;
+  breed: string;
   label: string;
   href: string;
   image: string;
@@ -22,6 +23,7 @@ interface LineupPuppy {
 const LINEUP_PUPPIES: LineupPuppy[] = [
   {
     name: "Max",
+    breed: "Maltipoo",
     label: "Meet Max, Maltipoo",
     href: "/puppies/maltipoo-max-male",
     image: "https://puppy.instabizweb.com/media/Z0ToauDx7Eve/5fffe4d022/b942a5_4b8cfb8204d24eadaf524332aba1dc15-mv2.webp",
@@ -36,6 +38,7 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
   },
   {
     name: "Korean Teacup Maltipoo",
+    breed: "Korean Teacup Maltipoo",
     label: "Meet Korean Teacup Maltipoo, Korean Teacup Maltipoo",
     href: "/puppies/korean-teacup-maltipoo-female",
     image: "https://puppy.instabizweb.com/media/gAaGwoGej2g6/5523e884dd/b942a5_50f0ae67c9ff437d911597d52a9e63b3-mv2.jpg",
@@ -49,6 +52,7 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
   },
   {
     name: "Korean Teacup Poodle",
+    breed: "Korean Teacup Poodle",
     label: "Meet Korean Teacup Poodle, Korean Teacup Poodle",
     href: "/puppies/korean-teacup-poodle-female",
     image: "https://puppy.instabizweb.com/media/xeMJCapr5vcU/e618c653b2/b942a5_14376a216177484dbbb27995d0f6aeb7-mv2.jpg",
@@ -62,6 +66,7 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
   },
   {
     name: "Maltipoo & Cavapoo",
+    breed: "Maltipoo & Cavapoo",
     label: "Meet Maltipoo & Cavapoo, Maltipoo & Cavapoo",
     href: "/puppies/maltipoo-cavapoo-male",
     image: "https://puppy.instabizweb.com/media/YQhey4j7uWvZ/3ea10db6c1/b942a5_7ce7e7bd18424b6c8fb16dd30113ade2-mv2.jpg",
@@ -75,6 +80,7 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
   },
   {
     name: "Toy Poodle",
+    breed: "Toy Poodle",
     label: "Meet Toy Poodle, Toy Poodle",
     href: "/puppies/toy-poodle-male-female",
     image: "https://puppy.instabizweb.com/media/vMu0BPvkAZ-j/c65e53967d/b942a5_0b2c0c0d178c4005acbe28725a5ea573-mv2.jpg",
@@ -88,6 +94,7 @@ const LINEUP_PUPPIES: LineupPuppy[] = [
   },
   {
     name: "Maltipoo",
+    breed: "Maltipoo",
     label: "Meet Maltipoo, Maltipoo",
     href: "/puppies/maltipoo-female-2",
     image: "https://puppy.instabizweb.com/media/3WJNmn6VVgVu/732f779474/b942a5_2b5dcece361b4589890ae920c66a1b70-mv2.jpg",
@@ -110,6 +117,7 @@ export default function HeroLineup() {
       {/* Puppy Arched Windows Lineup */}
       <ul className="tp-lineup" aria-label="Some of the puppies in our showroom">
         {LINEUP_PUPPIES.map((pup, i) => {
+          const isHovered = hoveredIdx === i;
           const style = {
             "--x": pup.x,
             "--w": pup.w,
@@ -132,6 +140,7 @@ export default function HeroLineup() {
               <Link
                 className="tp-lineup__pup"
                 data-pup-friend="true"
+                data-state={isHovered ? "pop" : undefined}
                 aria-label={pup.label}
                 href={pup.href}
               >
@@ -154,7 +163,7 @@ export default function HeroLineup() {
         })}
       </ul>
 
-      {/* Floating Name Tags Layer */}
+      {/* Floating Breed Name Tags Layer */}
       <ul aria-hidden="true" className="tp-lineup tp-lineup--tags">
         {LINEUP_PUPPIES.map((pup, i) => {
           const style = {
@@ -173,7 +182,7 @@ export default function HeroLineup() {
                 data-tag={hoveredIdx === i ? "show" : undefined}
               >
                 <span className="tp-lineup__name font-scrawl font-bold">
-                  {pup.name}
+                  {pup.breed}
                 </span>
               </span>
             </li>
@@ -181,7 +190,7 @@ export default function HeroLineup() {
         })}
       </ul>
 
-      {/* Center Mascot Teddy Peeking */}
+      {/* Center Mascot Teddy Peeking with Interactive Speech Bubble */}
       <div
         data-pup-stop="true"
         data-pose="peek"
@@ -191,7 +200,7 @@ export default function HeroLineup() {
         data-lane="true"
         className="pup-stop tp-hero__teddy"
       >
-        <div className="pup-buddy" data-facing="right">
+        <div className="pup-buddy relative" data-facing="right">
           <svg
             viewBox="0 0 300 240"
             style={{ overflow: "visible" }}
@@ -332,6 +341,15 @@ export default function HeroLineup() {
               </g>
             </g>
           </svg>
+
+          {/* Teddy Mascot Message Bubble */}
+          <span
+            aria-hidden="true"
+            className="pup-bubble font-scrawl font-bold"
+            data-show={hoveredIdx !== null ? "true" : "false"}
+          >
+            {hoveredIdx !== null ? LINEUP_PUPPIES[hoveredIdx].breed : ""}
+          </span>
         </div>
       </div>
 
@@ -377,4 +395,3 @@ export default function HeroLineup() {
     </div>
   );
 }
-
