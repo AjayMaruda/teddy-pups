@@ -130,7 +130,7 @@ export default function HeroLineup() {
           return (
             <li
               key={pup.name + i}
-              className="tp-lineup__seat"
+              className={`tp-lineup__seat ${isHovered ? "tp-lineup__seat--hovered" : ""}`}
               style={style}
               onMouseEnter={() => setHoveredIdx(i)}
               onMouseLeave={() => setHoveredIdx(null)}
@@ -138,12 +138,22 @@ export default function HeroLineup() {
               onBlur={() => setHoveredIdx(null)}
             >
               <Link
-                className="tp-lineup__pup"
+                className="tp-lineup__pup group"
                 data-pup-friend="true"
                 data-state={isHovered ? "pop" : undefined}
                 aria-label={pup.label}
                 href={pup.href}
               >
+                {/* Floating message tag naming the dog's breed */}
+                <span
+                  className={`tp-lineup__name font-scrawl font-bold ${
+                    isHovered ? "tp-lineup__name--show" : ""
+                  }`}
+                >
+                  {pup.breed}
+                </span>
+
+                {/* Arched photo window */}
                 <span className="tp-lineup__photo">
                   <Image
                     alt={pup.alt}
@@ -158,33 +168,6 @@ export default function HeroLineup() {
                   />
                 </span>
               </Link>
-            </li>
-          );
-        })}
-      </ul>
-
-      {/* Floating Breed Name Tags Layer */}
-      <ul aria-hidden="true" className="tp-lineup tp-lineup--tags">
-        {LINEUP_PUPPIES.map((pup, i) => {
-          const style = {
-            "--x": pup.x,
-            "--w": pup.w,
-            "--peek": pup.peek,
-            "--tilt": pup.tilt,
-            "--i": pup.index,
-            ...(pup.tagX ? { "--tag-x": pup.tagX } : {}),
-          } as React.CSSProperties;
-
-          return (
-            <li key={pup.name + "-tag-" + i} className="tp-lineup__seat" style={style}>
-              <span
-                className="tp-lineup__ghost"
-                data-tag={hoveredIdx === i ? "show" : undefined}
-              >
-                <span className="tp-lineup__name font-scrawl font-bold">
-                  {pup.breed}
-                </span>
-              </span>
             </li>
           );
         })}
