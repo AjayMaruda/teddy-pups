@@ -130,7 +130,7 @@ export default function HeroLineup() {
           return (
             <li
               key={pup.name + i}
-              className={`tp-lineup__seat ${isHovered ? "tp-lineup__seat--hovered" : ""}`}
+              className="tp-lineup__seat"
               style={style}
               onMouseEnter={() => setHoveredIdx(i)}
               onMouseLeave={() => setHoveredIdx(null)}
