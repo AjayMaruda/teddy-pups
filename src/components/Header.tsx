@@ -135,12 +135,12 @@ export default function Header() {
 
           {/* Right actions */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* WhatsApp button — visible on tablet+ (md: 768px+), hidden on mobile to prevent crowding */}
+            {/* WhatsApp button — only on tablet/desktop (md: 768px+), completely removed from top on mobile (<= 767px) where bottom bar takes over */}
             <a
               href="https://wa.me/971541676733?text=Hi%20TeddyPups!%20I'd%20love%20to%20know%20more%20about%20your%20puppies."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-whatsapp hidden py-2.5 text-sm font-semibold md:inline-flex"
+              className="btn btn-whatsapp !hidden py-2.5 text-sm font-semibold md:!inline-flex"
             >
               <WhatsAppIcon className="size-4" />
               <span>WhatsApp us</span>
