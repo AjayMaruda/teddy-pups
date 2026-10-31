@@ -854,21 +854,32 @@ body {
 }
 
 .tp-door--all {
-  align-self: stretch;
-  align-items: flex-end;
+  align-self: flex-end;
   display: flex;
 }
 
 .tp-door--all .tp-door__link {
   width: 100%;
+  display: block;
 }
 
 .tp-door__frame--all {
-  background: rgba(255, 253, 248, 0.3);
-  border-style: dashed;
-  place-items: center;
-  display: grid;
-  height: 100%;
+  aspect-ratio: 4 / 5.2;
+  width: 100%;
+  background: rgba(255, 253, 248, 0.45);
+  border: 3px dashed var(--color-cocoa-soft, #7a5c4d);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 4px 6px 0px rgba(42, 23, 14, 0.1);
+}
+
+.tp-door__frame--all:hover {
+  background: rgba(255, 253, 248, 0.75);
+  border-color: var(--color-toffee);
 }
 
 .tp-door__all {
@@ -876,9 +887,10 @@ body {
   text-decoration: underline;
   text-decoration-color: var(--color-toffee);
   text-underline-offset: 0.18em;
-  padding: 1rem;
-  font-size: clamp(1.4rem, 2vw, 2rem);
-  line-height: 1.1;
+  padding: 1.2rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  line-height: 1.25;
+  font-weight: 700;
   text-decoration-thickness: 0.08em;
-  color: var(--color-toffee-deep);
+  color: var(--color-cocoa);
 }

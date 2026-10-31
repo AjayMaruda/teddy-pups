@@ -123,7 +123,7 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
               href="/puppies"
               className="btn btn-primary shrink-0 text-sm sm:text-base"
             >
-              See all available puppies
+              Meet them all
             </Link>
           </header>
 
@@ -187,9 +187,7 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
                         <span className="font-plush tp-door__name">
                           {puppy.displayName}
                         </span>
-                        <span className="tp-door__meta">
-                          {metaString}
-                        </span>
+                        <span className="tp-door__meta">{metaString}</span>
                       </span>
 
                       {/* Arched Door Frame */}
@@ -197,7 +195,9 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
                         {/* Puppy Room (Photo Inside) */}
                         <span className="tp-door__room">
                           <Image
-                            alt={puppy.cover.alt || `${puppy.displayName} puppy`}
+                            alt={
+                              puppy.cover.alt || `${puppy.displayName} puppy`
+                            }
                             src={imageUrl}
                             fill
                             sizes="(min-width: 1024px) 16rem, 44vw"
@@ -242,9 +242,10 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
                     <span className="tp-door__name">&nbsp;</span>
                     <span className="tp-door__meta">&nbsp;</span>
                   </span>
-                  <span className="tp-door__frame tp-door__frame--all border-3 border-dashed border-cocoa/50 hover:border-toffee transition-colors rounded-t-full flex items-center justify-center p-6 bg-milk/40 hover:bg-milk/70">
-                    <span className="font-plush tp-door__all">
-                      See all available puppies ({puppies.length}) →
+                  <span className="tp-door__frame tp-door__frame--all hover:bg-milk/70 transition-colors">
+                    <span className="font-plush font-extrabold text-[25px] underline underline-offset-2 text-center leading-tight block">
+                      <span className="block">Meet</span>
+                      <span className="block">them all</span>
                     </span>
                   </span>
                 </Link>
