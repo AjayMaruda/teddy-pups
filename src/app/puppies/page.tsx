@@ -8,7 +8,6 @@ import { goneHomeData } from "@/data/goneHome";
 import PuppyCard from "@/components/PuppyCard";
 import TicketCard from "@/components/TicketCard";
 import MascotTeddy from "@/components/MascotTeddy";
-import { WhatsAppIcon } from "@/components/Header";
 import { Sparkles, Filter } from "lucide-react";
 
 function PuppiesContent() {
@@ -26,7 +25,9 @@ function PuppiesContent() {
       if (selectedBreed !== "all") {
         const matchesBreed =
           puppy.breed.toLowerCase().includes(selectedBreed.toLowerCase()) ||
-          puppy.breeds?.some((b) => b.slug.toLowerCase() === selectedBreed.toLowerCase());
+          puppy.breeds?.some(
+            (b) => b.slug.toLowerCase() === selectedBreed.toLowerCase(),
+          );
         if (!matchesBreed) return false;
       }
 
@@ -76,7 +77,8 @@ function PuppiesContent() {
             </svg>
           </div>
           <p className="text-lede mt-6 text-cocoa-soft">
-            Every listing shows real photos of the actual puppy. Open a profile to see them all, then ask us about them on WhatsApp.
+            Every listing shows real photos of the actual puppy. Open a profile
+            to see them all, then ask us about them on WhatsApp.
           </p>
         </div>
 
@@ -153,7 +155,9 @@ function PuppiesContent() {
               <button
                 key={breed.slug}
                 type="button"
-                onClick={() => setSelectedBreed(isSelected ? "all" : breed.slug)}
+                onClick={() =>
+                  setSelectedBreed(isSelected ? "all" : breed.slug)
+                }
                 className={`shrink-0 rounded-full border px-4 py-1.5 text-xs font-semibold transition-all ${
                   isSelected
                     ? "border-toffee bg-toffee text-milk"
@@ -182,7 +186,8 @@ function PuppiesContent() {
               Looking for a specific breed?
             </h3>
             <p className="mt-2 text-sm text-cocoa-soft max-w-md mx-auto">
-              We frequently source rare teacup breeds upon request. Send us a message on WhatsApp and we will find your dream companion.
+              We frequently source rare teacup breeds upon request. Send us a
+              message on WhatsApp and we will find your dream companion.
             </p>
             <div className="mt-6 flex justify-center gap-4">
               <button
@@ -202,7 +207,6 @@ function PuppiesContent() {
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp text-sm"
               >
-                <WhatsAppIcon className="size-4" />
                 <span>Ask on WhatsApp</span>
               </a>
             </div>
@@ -248,7 +252,9 @@ export default function PuppiesPage() {
     <Suspense
       fallback={
         <div className="gutter mx-auto max-w-[110rem] py-24 text-center">
-          <p className="font-scrawl text-lg text-toffee-ink">loading puppies...</p>
+          <p className="font-scrawl text-lg text-toffee-ink">
+            loading puppies...
+          </p>
         </div>
       }
     >

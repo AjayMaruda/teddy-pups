@@ -5,13 +5,11 @@ import Link from "next/link";
 import { puppiesData, breedsList } from "@/data/puppies";
 import { faqsData } from "@/data/faq";
 import { familiesData } from "@/data/families";
-import PuppyCard from "@/components/PuppyCard";
 import PolaroidCard from "@/components/PolaroidCard";
-import MascotTeddy from "@/components/MascotTeddy";
 import HeroLineup from "@/components/HeroLineup";
 import MeetPupsSection from "@/components/MeetPupsSection";
 import LightboxModal from "@/components/LightboxModal";
-import { PawIcon, WhatsAppIcon } from "@/components/Header";
+import { PawIcon } from "@/components/Header";
 import {
   Check,
   ShieldCheck,
@@ -100,7 +98,6 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="btn btn-whatsapp w-full text-sm sm:w-auto sm:text-base"
             >
-              <WhatsAppIcon className="size-4" />
               <span>Enquire on WhatsApp</span>
             </a>
           </div>
@@ -497,7 +494,6 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="btn btn-whatsapp text-base"
             >
-              <WhatsAppIcon className="size-4" />
               <span>Enquire on WhatsApp</span>
             </a>
             <Link href="/contact" className="btn btn-primary text-base">

@@ -1,5 +1,4 @@
 import React from "react";
-import { WhatsAppIcon } from "./Header";
 import { Phone } from "lucide-react";
 
 export default function BottomBar() {
@@ -15,7 +14,6 @@ export default function BottomBar() {
           rel="noopener noreferrer"
           className="btn btn-whatsapp !min-h-12 flex-1 !shadow-none text-sm font-semibold"
         >
-          <WhatsAppIcon className="size-4" />
           <span>WhatsApp us</span>
         </a>
         <a
@@ -29,4 +27,3 @@ export default function BottomBar() {
     </div>
   );
 }
-

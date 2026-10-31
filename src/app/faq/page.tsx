@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { faqsData } from "@/data/faq";
 import MascotTeddy from "@/components/MascotTeddy";
-import { WhatsAppIcon } from "@/components/Header";
+import {} from "@/components/Header";
 import { ChevronDown, HelpCircle, Sparkles } from "lucide-react";
 
 export default function FAQPage() {
@@ -46,7 +46,8 @@ export default function FAQPage() {
             Questions &amp; answers
           </h1>
           <p className="text-lede mt-4 text-cocoa-soft">
-            Answers about TeddyPups puppies: health checks and vaccinations, meeting local puppies, imported teacup breeds and delivery.
+            Answers about TeddyPups puppies: health checks and vaccinations,
+            meeting local puppies, imported teacup breeds and delivery.
           </p>
         </div>
 
@@ -92,12 +93,15 @@ export default function FAQPage() {
 
       {/* Still have questions CTA */}
       <div className="mt-20 rounded-3xl border-2 border-cocoa bg-[#fffdf8] p-8 sm:p-12 text-center shadow-[6px_6px_0px_#2a170e]">
-        <p className="font-scrawl text-lg font-bold text-toffee-ink">need more details?</p>
+        <p className="font-scrawl text-lg font-bold text-toffee-ink">
+          need more details?
+        </p>
         <h2 className="font-plush text-3xl font-bold text-cocoa sm:text-4xl mt-2">
           Can&apos;t find what you&apos;re looking for?
         </h2>
         <p className="mt-3 text-cocoa-soft max-w-xl mx-auto text-base">
-          Our friendly team is on standby 24/7 on WhatsApp to answer any questions about breeds, travel, vaccination passports, or visits.
+          Our friendly team is on standby 24/7 on WhatsApp to answer any
+          questions about breeds, travel, vaccination passports, or visits.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <a
@@ -106,7 +110,6 @@ export default function FAQPage() {
             rel="noopener noreferrer"
             className="btn btn-whatsapp"
           >
-            <WhatsAppIcon className="size-4" />
             <span>Chat on WhatsApp</span>
           </a>
           <Link href="/contact" className="btn btn-ghost">
@@ -117,4 +120,3 @@ export default function FAQPage() {
     </div>
   );
 }
-

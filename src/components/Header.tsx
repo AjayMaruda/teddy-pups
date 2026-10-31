@@ -31,23 +31,6 @@ export function PawIcon({
   );
 }
 
-export function WhatsAppIcon({ className = "size-4" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-      <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
-    </svg>
-  );
-}
-
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -142,7 +125,6 @@ export default function Header() {
               rel="noopener noreferrer"
               className="btn btn-whatsapp !hidden py-2.5 text-sm font-semibold md:!inline-flex"
             >
-              <WhatsAppIcon className="size-4" />
               <span>WhatsApp us</span>
             </a>
 
@@ -224,7 +206,6 @@ export default function Header() {
               className="btn btn-whatsapp w-full justify-center py-3.5 text-base font-bold shadow-md"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <WhatsAppIcon className="size-5" />
               <span>WhatsApp us</span>
             </a>
             <p className="text-center text-sm font-semibold text-cocoa/80">

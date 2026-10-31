@@ -6,7 +6,7 @@ import { Puppy } from "@/types";
 import MascotTeddy from "@/components/MascotTeddy";
 import LightboxModal from "@/components/LightboxModal";
 import LetterForm from "@/components/LetterForm";
-import { PawIcon, WhatsAppIcon } from "@/components/Header";
+import { PawIcon } from "@/components/Header";
 import {
   Play,
   Check,
@@ -202,7 +202,6 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
                   rel="noopener noreferrer"
                   className="btn btn-whatsapp w-full justify-center text-base"
                 >
-                  <WhatsAppIcon className="size-5" />
                   <span>Ask about {puppy.displayName} on WhatsApp</span>
                 </a>
                 <a

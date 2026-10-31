@@ -2,12 +2,19 @@ import React from "react";
 import { Metadata } from "next";
 import LetterForm from "@/components/LetterForm";
 import MascotTeddy from "@/components/MascotTeddy";
-import { WhatsAppIcon } from "@/components/Header";
-import { MapPin, Phone, Mail, Clock, ExternalLink, Sparkles } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  ExternalLink,
+  Sparkles,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Visit & contact | TeddyPups U.A.E.",
-  description: "Visit TeddyPups in Downtown Dubai or get in touch on WhatsApp, by phone or email.",
+  description:
+    "Visit TeddyPups in Downtown Dubai or get in touch on WhatsApp, by phone or email.",
 };
 
 export default function ContactPage() {
@@ -24,7 +31,9 @@ export default function ContactPage() {
             Get in touch with us
           </h1>
           <p className="text-lede mt-4 text-cocoa-soft">
-            Have questions about our puppies or adoption process? Fill out the form, and our team will get back to you promptly. Whether ready to adopt or just seeking info, we&apos;d love to hear from you!
+            Have questions about our puppies or adoption process? Fill out the
+            form, and our team will get back to you promptly. Whether ready to
+            adopt or just seeking info, we&apos;d love to hear from you!
           </p>
         </div>
 
@@ -57,14 +66,18 @@ export default function ContactPage() {
               Visit us in Downtown Dubai
             </h2>
             <p className="mt-3 text-sm text-cocoa-soft leading-relaxed">
-              Step into our Downtown Dubai showroom and experience the joy of choosing your puppy face-to-face. Schedule an appointment or drop by to cuddle our available pups.
+              Step into our Downtown Dubai showroom and experience the joy of
+              choosing your puppy face-to-face. Schedule an appointment or drop
+              by to cuddle our available pups.
             </p>
 
             <div className="mt-8 space-y-5 border-t border-cocoa/10 pt-6">
               <div className="flex items-start gap-4">
                 <MapPin className="size-5 text-toffee shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs uppercase font-bold tracking-wider text-cocoa/50">Address</p>
+                  <p className="text-xs uppercase font-bold tracking-wider text-cocoa/50">
+                    Address
+                  </p>
                   <p className="mt-0.5 text-base font-semibold text-cocoa">
                     Downtown Dubai, United Arab Emirates
                   </p>
@@ -83,18 +96,24 @@ export default function ContactPage() {
               <div className="flex items-start gap-4">
                 <Clock className="size-5 text-toffee shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs uppercase font-bold tracking-wider text-cocoa/50">Opening Hours</p>
+                  <p className="text-xs uppercase font-bold tracking-wider text-cocoa/50">
+                    Opening Hours
+                  </p>
                   <p className="mt-0.5 text-sm font-semibold text-cocoa">
                     Monday – Sunday: 10:00 AM – 9:00 PM (GST)
                   </p>
-                  <p className="text-xs text-cocoa-soft">Visits by appointment welcomed</p>
+                  <p className="text-xs text-cocoa-soft">
+                    Visits by appointment welcomed
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <Phone className="size-5 text-toffee shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs uppercase font-bold tracking-wider text-cocoa/50">Call or WhatsApp</p>
+                  <p className="text-xs uppercase font-bold tracking-wider text-cocoa/50">
+                    Call or WhatsApp
+                  </p>
                   <a
                     href="tel:+971541676733"
                     className="mt-0.5 block text-base font-semibold text-cocoa hover:text-toffee"
@@ -107,7 +126,9 @@ export default function ContactPage() {
               <div className="flex items-start gap-4">
                 <Mail className="size-5 text-toffee shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs uppercase font-bold tracking-wider text-cocoa/50">Email</p>
+                  <p className="text-xs uppercase font-bold tracking-wider text-cocoa/50">
+                    Email
+                  </p>
                   <a
                     href="mailto:teddypupsadmin@gmail.com"
                     className="mt-0.5 block text-base font-semibold text-cocoa hover:text-toffee"
@@ -125,7 +146,6 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp w-full justify-center text-sm"
               >
-                <WhatsAppIcon className="size-4" />
                 <span>Chat with showroom concierge</span>
               </a>
             </div>
@@ -135,4 +155,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
