@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Puppy } from "@/types";
@@ -18,8 +18,34 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
 
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollX, setScrollX] = useState(0);
+  const [pinHeight, setPinHeight] = useState<number | null>(null);
+  const [maxScrollDist, setMaxScrollDist] = useState(0);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
+  // Measure and calculate exact scroll distance so the page stays pinned until the carousel finishes
+  const measure = useCallback(() => {
+    if (!trackRef.current) return;
+    const trackW = trackRef.current.scrollWidth;
+    const viewportW = window.innerWidth;
+    const windowH = window.innerHeight;
+
+    // Full distance to bring the very last door (See all available) fully into comfortable view
+    const maxScroll = Math.max(0, trackW - viewportW * 0.7);
+    setMaxScrollDist(maxScroll);
+
+    // Pin container height equals the horizontal travel distance plus 100vh of viewport:
+    // This guarantees the screen stays pinned at top: 0 until the entire carousel has finished!
+    const totalHeight = maxScroll + windowH;
+    setPinHeight(totalHeight);
+  }, []);
+
+  useEffect(() => {
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure, puppies.length]);
+
+  // Synchronize vertical scroll with horizontal carousel translation
   useEffect(() => {
     let animId: number;
 
@@ -32,11 +58,12 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
       if (totalScrollable <= 0) return;
 
       const scrolled = -rect.top;
+      // Progress clamped strictly between 0 and 1:
       const progress = Math.max(0, Math.min(1, scrolled / totalScrollable));
 
-      const trackWidth = trackRef.current.scrollWidth;
+      const trackW = trackRef.current.scrollWidth;
       const viewportW = window.innerWidth;
-      const maxScroll = Math.max(0, trackWidth - viewportW * 0.65);
+      const maxScroll = Math.max(0, trackW - viewportW * 0.7);
 
       animId = requestAnimationFrame(() => {
         setScrollProgress(progress);
@@ -45,15 +72,13 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
     onScroll();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(animId);
     };
-  }, [puppies.length]);
+  }, []);
 
   return (
     <section
@@ -71,14 +96,16 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
       }
       aria-labelledby="meet-title"
     >
-      {/* Scroll Pin Range Container (tall to allow smooth horizontal progress) */}
+      {/* Scroll Pin Range Container: tall enough so screen stays completely pinned until carousel finishes */}
       <div
         ref={containerRef}
-        className="tp-meet__pin-range relative"
-        style={{ height: "320vh" }}
+        className="tp-meet__pin-range relative w-full"
+        style={{
+          height: pinHeight ? `${pinHeight}px` : "380vh",
+        }}
       >
-        {/* Sticky 100vh stage */}
-        <div className="tp-meet__stage sticky top-0 h-screen overflow-hidden flex flex-col justify-between">
+        {/* Sticky 100vh stage pinned at top: 0 */}
+        <div className="tp-meet__stage sticky top-0 h-screen overflow-hidden flex flex-col justify-between z-20">
           {/* Header */}
           <header className="tp-meet__head gutter mx-auto w-full max-w-[110rem] flex flex-wrap justify-between items-end gap-4 z-10 pt-4 sm:pt-6">
             <div>
@@ -132,11 +159,11 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
                 }
                 const metaString = metaParts.join(", ");
 
-                // A door is open if hovered, or if the scroll carousel has reached/passed it (first 3 open initially)
+                // Doors 0, 1, 2 start open (matching reference screenshot); subsequent doors open as scrolled past or hovered
                 const isDoorOpen =
                   hoveredIdx === i ||
                   i < 3 ||
-                  scrollProgress >= (i - 1.5) / puppies.length;
+                  scrollProgress >= (i - 1.2) / puppies.length;
 
                 const imageUrl = puppy.cover.url.startsWith("http")
                   ? puppy.cover.url
@@ -227,7 +254,7 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
             {/* Wooden Plank Floor Running Across the Bottom */}
             <div aria-hidden="true" className="tp-meet__floor" />
 
-            {/* Mascot Teddy Sitting / Walking in front */}
+            {/* Mascot Teddy Sitting / Standing in front */}
             <div className="tp-meet__teddy pointer-events-none select-none">
               <MascotTeddy
                 pose="standing"
@@ -241,4 +268,3 @@ export default function MeetPupsSection({ puppies }: MeetPupsSectionProps) {
     </section>
   );
 }
-

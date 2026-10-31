@@ -36,7 +36,7 @@ export default function HomePage() {
   const previewFamilies = familiesData.slice(0, 8);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       {/* SECTION 1: HERO SCENE */}
       <section
         id="hero-title"
