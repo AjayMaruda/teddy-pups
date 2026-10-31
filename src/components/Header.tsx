@@ -15,9 +15,18 @@ const navLinks = [
   { href: "/contact", label: "Visit & contact" },
 ];
 
-export function PawIcon({ className = "size-3 text-toffee" }: { className?: string }) {
+export function PawIcon({
+  className = "size-3 text-toffee",
+}: {
+  className?: string;
+}) {
   return (
-    <svg viewBox="0 0 64 64" className={className} aria-hidden="true" fill="currentColor">
+    <svg
+      viewBox="0 0 64 64"
+      className={className}
+      aria-hidden="true"
+      fill="currentColor"
+    >
       <path d="M32 30.5c-7.6 0-15.6 8.3-15.6 15.5 0 5.4 4.2 8.3 9.2 8.3 2.6 0 4.5-1.1 6.4-1.1s3.8 1.1 6.4 1.1c5 0 9.2-2.9 9.2-8.3 0-7.2-8-15.5-15.6-15.5zM19.28 26.71C21.07 30.08 20.42 33.92 17.84 35.29C15.25 36.67 11.71 35.05 9.92 31.69C8.13 28.32 8.78 24.48 11.36 23.11C13.95 21.73 17.49 23.35 19.28 26.71ZM29.62 15.64C30.32 19.62 28.46 23.26 25.47 23.79C22.48 24.32 19.48 21.53 18.78 17.56C18.08 13.58 19.94 9.94 22.93 9.41C25.92 8.88 28.92 11.67 29.62 15.64ZM45.22 17.56C44.52 21.53 41.52 24.32 38.53 23.79C35.54 23.26 33.68 19.62 34.38 15.64C35.08 11.67 38.08 8.88 41.07 9.41C44.06 9.94 45.92 13.58 45.22 17.56ZM54.08 31.69C52.29 35.05 48.75 36.67 46.16 35.29C43.58 33.92 42.93 30.08 44.72 26.71C46.51 23.35 50.05 21.73 52.64 23.11C55.22 24.48 55.87 28.32 54.08 31.69Z" />
     </svg>
   );
@@ -25,7 +34,15 @@ export function PawIcon({ className = "size-3 text-toffee" }: { className?: stri
 
 export function WhatsAppIcon({ className = "size-4" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
       <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
     </svg>
@@ -76,9 +93,14 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav aria-label="Main" className="hidden items-center gap-1 md:flex lg:gap-2">
+        <nav
+          aria-label="Main"
+          className="hidden items-center gap-1 md:flex lg:gap-2"
+        >
           {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+            const isActive =
+              pathname === link.href ||
+              (link.href !== "/" && pathname.startsWith(link.href));
             return (
               <Link
                 key={link.href}
@@ -121,21 +143,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Decorative Scalloped Hemline */}
-      <svg
-        aria-hidden="true"
-        className="tp-header__hem absolute -bottom-[12px] left-0 right-0 h-[12px] w-full overflow-hidden pointer-events-none"
-        preserveAspectRatio="none"
-        viewBox="0 0 100 12"
-      >
-        <defs>
-          <pattern id="tp-hem-pattern" width="44" height="12" patternUnits="userSpaceOnUse">
-            <path d="M0 0 H44 V2 A22 10 0 0 1 0 2 Z" fill="#fffdf8" />
-            <path d="M0 2 A22 10 0 0 0 44 2" fill="none" stroke="#2a170e" strokeWidth="1.5" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="12" fill="url(#tp-hem-pattern)" />
-      </svg>
 
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
@@ -155,7 +162,9 @@ export default function Header() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <span className="font-plush text-xl font-bold text-cocoa">TeddyPups</span>
+              <span className="font-plush text-xl font-bold text-cocoa">
+                TeddyPups
+              </span>
             </Link>
             <button
               type="button"
@@ -169,14 +178,18 @@ export default function Header() {
 
           <nav className="flex flex-col gap-3 py-8">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              const isActive =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between rounded-2xl px-5 py-3.5 text-lg font-semibold ${
-                    isActive ? "bg-honey-soft/50 text-toffee-deep" : "text-cocoa hover:bg-honey-soft/20"
+                    isActive
+                      ? "bg-honey-soft/50 text-toffee-deep"
+                      : "text-cocoa hover:bg-honey-soft/20"
                   }`}
                 >
                   <span>{link.label}</span>
@@ -202,4 +215,3 @@ export default function Header() {
     </header>
   );
 }
-
