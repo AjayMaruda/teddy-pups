@@ -24,7 +24,9 @@ export default function HappyFamiliesPage() {
             Happy families
           </h1>
           <p className="text-lede mt-4 text-cocoa-soft">
-            Real photos shared by TeddyPups families after welcoming their new puppy home. Every snap captures a heartwarming story of companionship, trust, and pure joy.
+            Real photos shared by TeddyPups families after welcoming their new
+            puppy home. Every snap captures a heartwarming story of
+            companionship, trust, and pure joy.
           </p>
         </div>
 
@@ -38,7 +40,7 @@ export default function HappyFamiliesPage() {
       </div>
 
       {/* Polaroid Photo Wall */}
-      <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-6">
+      <div className="mt-14 grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-6">
         {familiesData.map((polaroid, idx) => (
           <PolaroidCard
             key={polaroid.id}
@@ -60,7 +62,8 @@ export default function HappyFamiliesPage() {
           alt={familiesData[activePhotoIndex].alt}
           onPrev={() =>
             setActivePhotoIndex(
-              (activePhotoIndex - 1 + familiesData.length) % familiesData.length
+              (activePhotoIndex - 1 + familiesData.length) %
+                familiesData.length,
             )
           }
           onNext={() =>
@@ -71,12 +74,15 @@ export default function HappyFamiliesPage() {
 
       {/* Bottom CTA */}
       <div className="mt-28 rounded-3xl border-2 border-cocoa bg-[#fffdf8] p-8 sm:p-14 text-center shadow-[6px_6px_0px_#2a170e]">
-        <p className="font-scrawl text-lg font-bold text-toffee-ink">join our circle</p>
+        <p className="font-scrawl text-lg font-bold text-toffee-ink">
+          join our circle
+        </p>
         <h2 className="font-plush text-3xl font-bold text-cocoa sm:text-4xl mt-2">
           Ready to create your own memories?
         </h2>
         <p className="mt-3 text-cocoa-soft max-w-xl mx-auto text-base">
-          Browse our available puppies today or visit our showroom in Downtown Dubai.
+          Browse our available puppies today or visit our showroom in Downtown
+          Dubai.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="/puppies" className="btn btn-primary">
@@ -90,4 +96,3 @@ export default function HappyFamiliesPage() {
     </div>
   );
 }
-

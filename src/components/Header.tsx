@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -55,128 +54,64 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   return (
-    <header
-      id="site-header"
-      data-scrolled={scrolled}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-milk/95 shadow-sm backdrop-blur-md" : "bg-milk"
-      }`}
-    >
-      <div className="gutter mx-auto flex h-[var(--header-h)] max-w-[110rem] items-center justify-between">
-        {/* Brand */}
-        <Link
-          href="/"
-          className="group flex items-center gap-3 transition-transform hover:scale-[1.02]"
-          aria-label="TeddyPups U.A.E. — home"
-        >
-          <div className="relative size-10 overflow-hidden rounded-full border border-cocoa/20 sm:size-12">
-            <Image
-              src="/brand/logo.png"
-              alt="TeddyPups Logo"
-              width={56}
-              height={56}
-              className="h-full w-full object-cover"
-              priority
-            />
-          </div>
-          <span className="font-plush text-2xl font-bold tracking-tight text-cocoa sm:text-[1.75rem]">
-            TeddyPups
-          </span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav
-          aria-label="Main"
-          className="hidden items-center gap-1 md:flex lg:gap-2"
-        >
-          {navLinks.map((link) => {
-            const isActive =
-              pathname === link.href ||
-              (link.href !== "/" && pathname.startsWith(link.href));
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.95rem] font-semibold transition-all ${
-                  isActive
-                    ? "bg-honey-soft/50 text-toffee-deep"
-                    : "text-cocoa-soft hover:bg-honey-soft/20 hover:text-cocoa"
-                }`}
-              >
-                <span>{link.label}</span>
-                {isActive && <PawIcon className="size-3 text-toffee" />}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Action button & Mobile Hamburger */}
-        <div className="flex items-center gap-3">
-          <a
-            href="https://wa.me/971541676733?text=Hi%20TeddyPups!%20I'd%20love%20to%20know%20more%20about%20your%20puppies."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-whatsapp hidden text-sm font-semibold sm:inline-flex"
+    <>
+      <header
+        id="site-header"
+        data-scrolled={scrolled}
+        className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
+          scrolled ? "bg-milk/95 shadow-sm backdrop-blur-md" : "bg-milk"
+        }`}
+      >
+        <div className="gutter mx-auto flex h-[var(--header-h)] max-w-[110rem] items-center justify-between">
+          {/* Brand */}
+          <Link
+            href="/"
+            className="group flex items-center gap-2.5 transition-transform hover:scale-[1.02]"
+            aria-label="TeddyPups U.A.E. — home"
           >
-            <WhatsAppIcon className="size-4" />
-            <span>WhatsApp us</span>
-          </a>
+            <div className="relative size-9 shrink-0 overflow-hidden rounded-full border border-cocoa/20 sm:size-11">
+              <Image
+                src="/brand/logo.png"
+                alt="TeddyPups Logo"
+                width={56}
+                height={56}
+                className="h-full w-full object-cover transition-transform group-hover:-rotate-6"
+                priority
+              />
+            </div>
+            <span className="font-plush text-xl font-bold tracking-tight text-cocoa sm:text-2xl">
+              TeddyPups
+            </span>
+          </Link>
 
-          {/* Mobile menu trigger */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="inline-flex h-10 items-center gap-2 rounded-full border-2 border-cocoa bg-milk px-4 text-[0.95rem] font-semibold text-cocoa md:hidden"
-            aria-label="Open mobile menu"
+          {/* Desktop Nav (shown on lg: 1024px+) */}
+          <nav
+            aria-label="Main"
+            className="hidden items-center gap-1 lg:flex xl:gap-2"
           >
-            <Menu className="size-4" />
-            <span>Menu</span>
-          </button>
-        </div>
-      </div>
-
-
-      {/* Mobile Drawer Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col justify-between bg-milk p-6 md:hidden">
-          <div className="flex items-center justify-between border-b border-cocoa/10 pb-5">
-            <Link
-              href="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-3"
-            >
-              <div className="size-10 overflow-hidden rounded-full border border-cocoa/20">
-                <Image
-                  src="/brand/logo.png"
-                  alt="TeddyPups Logo"
-                  width={40}
-                  height={40}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <span className="font-plush text-xl font-bold text-cocoa">
-                TeddyPups
-              </span>
-            </Link>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="h-10 rounded-full border-2 border-cocoa bg-milk px-5 text-sm font-semibold text-cocoa"
-              aria-label="Close menu"
-            >
-              Close
-            </button>
-          </div>
-
-          <nav className="flex flex-col gap-3 py-8">
             {navLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
@@ -185,33 +120,119 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between rounded-2xl px-5 py-3.5 text-lg font-semibold ${
+                  className={`relative flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[0.92rem] font-semibold transition-all ${
                     isActive
                       ? "bg-honey-soft/50 text-toffee-deep"
-                      : "text-cocoa hover:bg-honey-soft/20"
+                      : "text-cocoa-soft hover:bg-honey-soft/20 hover:text-cocoa"
                   }`}
                 >
                   <span>{link.label}</span>
-                  {isActive && <PawIcon className="size-4 text-toffee" />}
+                  {isActive && <PawIcon className="size-2.5 text-toffee" />}
                 </Link>
               );
             })}
           </nav>
 
-          <div className="border-t border-cocoa/10 pt-6">
+          {/* Right actions */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* WhatsApp button — visible on tablet+ (md: 768px+), hidden on mobile to prevent crowding */}
             <a
               href="https://wa.me/971541676733?text=Hi%20TeddyPups!%20I'd%20love%20to%20know%20more%20about%20your%20puppies."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-whatsapp w-full justify-center py-4 text-base font-semibold"
+              className="btn btn-whatsapp hidden py-2.5 text-sm font-semibold md:inline-flex"
+            >
+              <WhatsAppIcon className="size-4" />
+              <span>WhatsApp us</span>
+            </a>
+
+            {/* Mobile / Tablet Menu Button (authentic to reference website: paw icon + "Menu") */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="inline-flex h-10 items-center gap-2 rounded-full border-2 border-cocoa bg-milk px-3.5 py-1.5 text-[0.95rem] font-semibold text-cocoa transition-all hover:bg-honey-soft/30 active:scale-95 lg:hidden"
+              aria-label="Open menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
+            >
+              <PawIcon className="size-3.5 text-toffee shrink-0" />
+              <span>Menu</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Fullscreen Honey Mobile Menu — matching reference website */}
+      {mobileMenuOpen && (
+        <div
+          id="mobile-nav"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+          className="fixed inset-0 z-50 flex h-dvh w-screen flex-col justify-between overflow-y-auto bg-honey p-6 text-cocoa animate-fadeIn sm:p-10"
+        >
+          {/* Top Row: Warm greeting & Close button */}
+          <div className="flex items-center justify-between border-b border-cocoa/15 pb-5">
+            <span className="font-scrawl text-xl font-bold text-toffee-ink sm:text-2xl">
+              where to, friend?
+            </span>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-flex h-10 items-center justify-center rounded-full bg-cocoa px-5 text-sm font-bold text-milk shadow-sm transition-transform active:scale-95 hover:bg-cocoa-soft"
+              aria-label="Close menu"
+            >
+              Close
+            </button>
+          </div>
+
+          {/* Navigation Links with large plush storybook typography */}
+          <nav aria-label="Mobile Navigation" className="my-auto py-8">
+            <ul className="space-y-1 sm:space-y-2">
+              {navLinks.map((link) => {
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== "/" && pathname.startsWith(link.href));
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`font-plush flex items-center justify-between py-2 text-[clamp(2.1rem,8.5vw,3.2rem)] font-bold leading-tight transition-colors ${
+                        isActive
+                          ? "text-toffee-deep"
+                          : "text-cocoa hover:text-toffee-deep"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && (
+                        <PawIcon className="size-7 text-toffee shrink-0" />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Bottom Action Footer */}
+          <div className="space-y-3 border-t border-cocoa/15 pt-6">
+            <a
+              href="https://wa.me/971541676733?text=Hi%20TeddyPups!%20I'd%20love%20to%20know%20more%20about%20your%20puppies."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-whatsapp w-full justify-center py-3.5 text-base font-bold shadow-md"
+              onClick={() => setMobileMenuOpen(false)}
             >
               <WhatsAppIcon className="size-5" />
-              <span>WhatsApp us (+971 54 167 6733)</span>
+              <span>WhatsApp us</span>
             </a>
+            <p className="text-center text-sm font-semibold text-cocoa/80">
+              +971 54 167 6733
+            </p>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

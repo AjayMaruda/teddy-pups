@@ -7,7 +7,14 @@ import MascotTeddy from "@/components/MascotTeddy";
 import LightboxModal from "@/components/LightboxModal";
 import LetterForm from "@/components/LetterForm";
 import { PawIcon, WhatsAppIcon } from "@/components/Header";
-import { Play, Check, ShieldCheck, Heart, Share2, Sparkles } from "lucide-react";
+import {
+  Play,
+  Check,
+  ShieldCheck,
+  Heart,
+  Share2,
+  Sparkles,
+} from "lucide-react";
 
 interface PuppyDetailClientProps {
   puppy: Puppy;
@@ -17,7 +24,8 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
-  const mediaItems = puppy.media && puppy.media.length > 0 ? puppy.media : [puppy.cover];
+  const mediaItems =
+    puppy.media && puppy.media.length > 0 ? puppy.media : [puppy.cover];
   const activeMedia = mediaItems[activeMediaIndex] || mediaItems[0];
   const isVideo = activeMedia.kind === "video";
 
@@ -27,7 +35,7 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
   const currentMediaUrl = getMediaUrl(activeMedia.url);
 
   const whatsappMessage = encodeURIComponent(
-    `Hi TeddyPups! I'm interested in ${puppy.displayName}, the ${puppy.breed}: https://puppy.instabizweb.com/puppies/${puppy.slug}`
+    `Hi TeddyPups! I'm interested in ${puppy.displayName}, the ${puppy.breed}: https://puppy.instabizweb.com/puppies/${puppy.slug}`,
   );
   const whatsappUrl = `https://wa.me/971541676733?text=${whatsappMessage}`;
 
@@ -124,13 +132,16 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
         </div>
 
         {/* Right Column: Sticky Collar Tag Board */}
-        <div className="min-w-0 lg:col-span-5">
+        <div className="mt-14 min-w-0 lg:mt-0 lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
             {/* Tag Container */}
-            <div className="tp-board relative rounded-[2.2rem_2.2rem_2.2rem_0.6rem] p-7 sm:p-9">
-              {/* Mascot Peeking over the collar tag */}
-              <div className="absolute -top-[4.8rem] right-6 w-36 pointer-events-none">
-                <MascotTeddy pose="peek" label={`Teddy peeking over ${puppy.displayName}'s tag`} />
+            <div className="tp-board relative rounded-[2.2rem_2.2rem_2.2rem_0.6rem] p-6 sm:p-9">
+              {/* Mascot Peeking over the collar tag (visible with clearance) */}
+              <div className="absolute -top-[4.2rem] right-6 w-32 sm:w-36 pointer-events-none">
+                <MascotTeddy
+                  pose="peek"
+                  label={`Teddy peeking over ${puppy.displayName}'s tag`}
+                />
               </div>
 
               {/* Status Chip */}
@@ -157,15 +168,23 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
               <dl className="mt-7 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-b border-cocoa/10 py-6">
                 <div>
                   <dt className="font-scrawl text-sm text-cocoa-soft">Breed</dt>
-                  <dd className="mt-0.5 text-base font-bold text-cocoa">{puppy.breed}</dd>
+                  <dd className="mt-0.5 text-base font-bold text-cocoa">
+                    {puppy.breed}
+                  </dd>
                 </div>
                 <div>
-                  <dt className="font-scrawl text-sm text-cocoa-soft">Boy or girl</dt>
-                  <dd className="mt-0.5 text-base font-bold text-cocoa">{puppy.genderLabel}</dd>
+                  <dt className="font-scrawl text-sm text-cocoa-soft">
+                    Boy or girl
+                  </dt>
+                  <dd className="mt-0.5 text-base font-bold text-cocoa">
+                    {puppy.genderLabel}
+                  </dd>
                 </div>
                 <div>
                   <dt className="font-scrawl text-sm text-cocoa-soft">Age</dt>
-                  <dd className="mt-0.5 text-base font-bold text-cocoa">{puppy.age}</dd>
+                  <dd className="mt-0.5 text-base font-bold text-cocoa">
+                    {puppy.age}
+                  </dd>
                 </div>
                 <div>
                   <dt className="font-scrawl text-sm text-cocoa-soft">Where</dt>
@@ -233,10 +252,14 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
       <section className="mt-24 border-t border-cocoa/10 pt-16">
         <div className="flex items-center gap-2">
           <span className="tp-chapter__n">3</span>
-          <span className="font-scrawl text-lg font-bold text-toffee-ink">the way home</span>
+          <span className="font-scrawl text-lg font-bold text-toffee-ink">
+            the way home
+          </span>
         </div>
         <h2 className="font-plush text-big mt-3 font-bold text-cocoa">
-          {isImported ? "Coming home from abroad" : "Taking your puppy home in Dubai"}
+          {isImported
+            ? "Coming home from abroad"
+            : "Taking your puppy home in Dubai"}
         </h2>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -244,30 +267,42 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
             <>
               <div className="tp-paper">
                 <span className="tp-trail__num">1</span>
-                <h3 className="font-plush text-lg font-bold text-cocoa">Reserve your puppy</h3>
+                <h3 className="font-plush text-lg font-bold text-cocoa">
+                  Reserve your puppy
+                </h3>
                 <p className="mt-2 text-sm text-cocoa-soft leading-relaxed">
-                  Tell us which puppy has captured your heart and secure your reservation.
+                  Tell us which puppy has captured your heart and secure your
+                  reservation.
                 </p>
               </div>
               <div className="tp-paper">
                 <span className="tp-trail__num">2</span>
-                <h3 className="font-plush text-lg font-bold text-cocoa">Personalized consultation</h3>
+                <h3 className="font-plush text-lg font-bold text-cocoa">
+                  Personalized consultation
+                </h3>
                 <p className="mt-2 text-sm text-cocoa-soft leading-relaxed">
-                  We finalize details with you and share real-time photo &amp; video updates on your puppy&apos;s journey.
+                  We finalize details with you and share real-time photo &amp;
+                  video updates on your puppy&apos;s journey.
                 </p>
               </div>
               <div className="tp-paper">
                 <span className="tp-trail__num">3</span>
-                <h3 className="font-plush text-lg font-bold text-cocoa">Import &amp; arrival</h3>
+                <h3 className="font-plush text-lg font-bold text-cocoa">
+                  Import &amp; arrival
+                </h3>
                 <p className="mt-2 text-sm text-cocoa-soft leading-relaxed">
-                  We manage all veterinary health checks, certified travel arrangements, and customs documentation.
+                  We manage all veterinary health checks, certified travel
+                  arrangements, and customs documentation.
                 </p>
               </div>
               <div className="tp-paper">
                 <span className="tp-trail__num">4</span>
-                <h3 className="font-plush text-lg font-bold text-cocoa">Welcome home</h3>
+                <h3 className="font-plush text-lg font-bold text-cocoa">
+                  Welcome home
+                </h3>
                 <p className="mt-2 text-sm text-cocoa-soft leading-relaxed">
-                  We hand-deliver your puppy and provide dedicated guidance to ensure a smooth transition into your family.
+                  We hand-deliver your puppy and provide dedicated guidance to
+                  ensure a smooth transition into your family.
                 </p>
               </div>
             </>
@@ -275,30 +310,42 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
             <>
               <div className="tp-paper">
                 <span className="tp-trail__num">1</span>
-                <h3 className="font-plush text-lg font-bold text-cocoa">Explore &amp; connect</h3>
+                <h3 className="font-plush text-lg font-bold text-cocoa">
+                  Explore &amp; connect
+                </h3>
                 <p className="mt-2 text-sm text-cocoa-soft leading-relaxed">
-                  Browse photos and chat with our team on WhatsApp about {puppy.displayName}&apos;s personality.
+                  Browse photos and chat with our team on WhatsApp about{" "}
+                  {puppy.displayName}&apos;s personality.
                 </p>
               </div>
               <div className="tp-paper">
                 <span className="tp-trail__num">2</span>
-                <h3 className="font-plush text-lg font-bold text-cocoa">Showroom visit</h3>
+                <h3 className="font-plush text-lg font-bold text-cocoa">
+                  Showroom visit
+                </h3>
                 <p className="mt-2 text-sm text-cocoa-soft leading-relaxed">
-                  Step into our Downtown Dubai showroom to cuddle and bond with {puppy.displayName} face-to-face.
+                  Step into our Downtown Dubai showroom to cuddle and bond with{" "}
+                  {puppy.displayName} face-to-face.
                 </p>
               </div>
               <div className="tp-paper">
                 <span className="tp-trail__num">3</span>
-                <h3 className="font-plush text-lg font-bold text-cocoa">Health review</h3>
+                <h3 className="font-plush text-lg font-bold text-cocoa">
+                  Health review
+                </h3>
                 <p className="mt-2 text-sm text-cocoa-soft leading-relaxed">
-                  Review complete vaccination passports and licensed vet health certificates together.
+                  Review complete vaccination passports and licensed vet health
+                  certificates together.
                 </p>
               </div>
               <div className="tp-paper">
                 <span className="tp-trail__num">4</span>
-                <h3 className="font-plush text-lg font-bold text-cocoa">Take puppy home</h3>
+                <h3 className="font-plush text-lg font-bold text-cocoa">
+                  Take puppy home
+                </h3>
                 <p className="mt-2 text-sm text-cocoa-soft leading-relaxed">
-                  Take {puppy.displayName} home the very same day, or arrange white-glove delivery to your doorstep.
+                  Take {puppy.displayName} home the very same day, or arrange
+                  white-glove delivery to your doorstep.
                 </p>
               </div>
             </>
@@ -307,7 +354,10 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
       </section>
 
       {/* CHAPTER 4: ASK ABOUT PUPPY FORM */}
-      <section id={`enquire-${puppy.slug}`} className="mt-24 border-t border-cocoa/10 pt-16">
+      <section
+        id={`enquire-${puppy.slug}`}
+        className="mt-24 border-t border-cocoa/10 pt-16"
+      >
         <div className="flex items-center gap-2 mb-6">
           <span className="tp-chapter__n">4</span>
           <span className="font-scrawl text-lg font-bold text-toffee-ink">
@@ -333,7 +383,7 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
         videoUrl={isVideo ? currentMediaUrl : undefined}
         onPrev={() =>
           setActiveMediaIndex(
-            (activeMediaIndex - 1 + mediaItems.length) % mediaItems.length
+            (activeMediaIndex - 1 + mediaItems.length) % mediaItems.length,
           )
         }
         onNext={() =>
@@ -343,4 +393,3 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
     </div>
   );
 }
-
