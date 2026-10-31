@@ -3,6 +3,7 @@ import { Fraunces, Figtree, Shantell_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BottomBar from "@/components/BottomBar";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 pt-[var(--header-h)]">{children}</main>
         <Footer />
+        <BottomBar />
       </body>
     </html>
   );
