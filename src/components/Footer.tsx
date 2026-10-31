@@ -4,7 +4,7 @@ import { WhatsAppIcon } from "./Header";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#24130b] text-milk">
+    <footer className="relative bg-[#24130b] text-milk pb-[calc(var(--bar-h)+1.5rem)] md:pb-0">
       {/* Rolling hill transition SVG at top */}
       <div className="overflow-hidden leading-none">
         <svg

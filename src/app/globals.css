@@ -16,13 +16,15 @@
   --color-blush: #f9cdbf;
 
   --gutter: clamp(1rem, 4vw, 3.5rem);
-  --header-h: 4rem;
+  --header-h: 4.75rem;
+  --bar-h: 0px;
   accent-color: var(--color-toffee-deep);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   :root {
-    --header-h: 4.75rem;
+    --header-h: 4rem;
+    --bar-h: calc(4.25rem + env(safe-area-inset-bottom, 0px));
   }
 }
 
