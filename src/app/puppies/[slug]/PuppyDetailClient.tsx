@@ -124,12 +124,12 @@ export default function PuppyDetailClient({ puppy }: PuppyDetailClientProps) {
         </div>
 
         {/* Right Column: Sticky Collar Tag Board */}
-        <div className="min-w-0 lg:col-span-5">
+        <div className="mt-14 min-w-0 lg:mt-0 lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
             {/* Tag Container */}
-            <div className="tp-board relative rounded-[2.2rem_2.2rem_2.2rem_0.6rem] p-7 sm:p-9">
-              {/* Mascot Peeking over the collar tag */}
-              <div className="absolute -top-[4.8rem] right-6 w-36 pointer-events-none">
+            <div className="tp-board relative rounded-[2.2rem_2.2rem_2.2rem_0.6rem] p-6 sm:p-9">
+              {/* Mascot Peeking over the collar tag (visible with clearance) */}
+              <div className="absolute -top-[4.2rem] right-6 w-32 sm:w-36 pointer-events-none">
                 <MascotTeddy pose="peek" label={`Teddy peeking over ${puppy.displayName}'s tag`} />
               </div>
 

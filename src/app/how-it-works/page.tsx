@@ -47,12 +47,12 @@ export default function HowItWorksPage() {
         </div>
 
         {/* Tab Buttons */}
-        <div className="mt-10 flex justify-center">
-          <div className="inline-flex rounded-full border-2 border-cocoa bg-milk p-1.5 shadow-[4px_4px_0px_#2a170e]">
+        <div className="mt-10 flex justify-center px-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 w-full max-w-lg rounded-2xl sm:rounded-full border-2 border-cocoa bg-milk p-1.5 shadow-[4px_4px_0px_#2a170e] gap-1">
             <button
               type="button"
               onClick={() => setActiveWay("local")}
-              className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all ${
+              className={`rounded-xl sm:rounded-full px-4 sm:px-6 py-2.5 text-xs sm:text-sm font-bold transition-all text-center ${
                 activeWay === "local"
                   ? "bg-toffee text-milk shadow-sm"
                   : "text-cocoa hover:text-toffee-deep"
@@ -63,7 +63,7 @@ export default function HowItWorksPage() {
             <button
               type="button"
               onClick={() => setActiveWay("imported")}
-              className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all ${
+              className={`rounded-xl sm:rounded-full px-4 sm:px-6 py-2.5 text-xs sm:text-sm font-bold transition-all text-center ${
                 activeWay === "imported"
                   ? "bg-toffee text-milk shadow-sm"
                   : "text-cocoa hover:text-toffee-deep"

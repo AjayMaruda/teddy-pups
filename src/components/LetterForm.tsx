@@ -101,7 +101,7 @@ export default function LetterForm({
 
             <div className="flex flex-wrap items-center gap-2">
               <span>My name is</span>
-              <div className="inline-block flex-1 min-w-[200px]">
+              <div className="inline-block w-full min-w-0 sm:w-auto sm:flex-1">
                 <input
                   type="text"
                   placeholder="your full name"
@@ -118,7 +118,7 @@ export default function LetterForm({
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-block flex-1 min-w-[180px]">
+              <div className="inline-block w-full min-w-0 sm:w-auto sm:flex-1">
                 <input
                   type="text"
                   placeholder="WhatsApp or phone number"
@@ -132,7 +132,7 @@ export default function LetterForm({
                 )}
               </div>
               <span>or by email at</span>
-              <div className="inline-block flex-1 min-w-[200px]">
+              <div className="inline-block w-full min-w-0 sm:w-auto sm:flex-1">
                 <input
                   type="email"
                   placeholder="your email address"
@@ -150,7 +150,7 @@ export default function LetterForm({
 
             <div className="flex flex-wrap items-center gap-2">
               <span>I live in</span>
-              <div className="inline-block flex-1 min-w-[180px]">
+              <div className="inline-block w-full min-w-0 sm:w-auto sm:flex-1">
                 <input
                   type="text"
                   placeholder="city or neighborhood (e.g. Dubai Marina)"
@@ -164,7 +164,7 @@ export default function LetterForm({
                 )}
               </div>
               <span>, and I&apos;m curious about</span>
-              <div className="inline-block flex-1 min-w-[200px]">
+              <div className="inline-block w-full min-w-0 sm:w-auto sm:flex-1">
                 <select
                   {...register("puppyInterest")}
                   className="w-full border-b-2 border-cocoa/40 bg-transparent px-2 py-1 font-semibold text-cocoa focus:border-toffee focus:outline-none"

@@ -26,33 +26,33 @@ export default function HomePage() {
   return (
     <div className="relative overflow-hidden">
       {/* SECTION 1: HERO SCENE */}
-      <section id="hero-title" className="tp-hero gutter mx-auto max-w-[110rem] pb-24 pt-10 sm:pt-16 md:pt-20">
+      <section id="hero-title" className="tp-hero gutter mx-auto max-w-[110rem] pb-16 pt-8 sm:pb-24 sm:pt-16 md:pt-20">
         <div className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-toffee/20 bg-honey-soft/40 px-4 py-1.5 shadow-sm">
-            <PawIcon className="size-3.5 text-toffee" />
-            <span className="font-scrawl text-sm font-bold text-toffee-ink">
+          <div className="inline-flex items-center gap-2 rounded-full border border-toffee/20 bg-honey-soft/40 px-3 py-1.5 shadow-sm sm:px-4">
+            <PawIcon className="size-3 text-toffee" />
+            <span className="font-scrawl text-xs font-bold text-toffee-ink sm:text-sm">
               every puppy is family
             </span>
           </div>
 
-          <h1 className="font-plush text-giant mt-6 max-w-4xl font-bold tracking-tight text-cocoa">
+          <h1 className="font-plush text-giant mt-5 max-w-4xl font-bold tracking-tight text-cocoa sm:mt-6">
             <span className="block">Premium teacup</span>
             <span className="block text-toffee-deep">puppies in Dubai</span>
           </h1>
 
-          <p className="text-lede mt-6 max-w-2xl text-cocoa-soft">
+          <p className="text-lede mt-4 max-w-2xl text-cocoa-soft sm:mt-6">
             Meet your new best friend in our Dubai showroom, or order a rare miniature breed from trusted breeders in Korea &amp; Europe.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/puppies" className="btn btn-primary text-base">
+          <div className="mt-6 flex w-full flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
+            <Link href="/puppies" className="btn btn-primary w-full text-sm sm:w-auto sm:text-base">
               View available puppies
             </Link>
             <a
               href="https://wa.me/971541676733?text=Hi%20TeddyPups!%20I'd%20love%20to%20know%20more%20about%20your%20puppies."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-whatsapp text-base"
+              className="btn btn-whatsapp w-full text-sm sm:w-auto sm:text-base"
             >
               <WhatsAppIcon className="size-4" />
               <span>Enquire on WhatsApp</span>
@@ -61,9 +61,9 @@ export default function HomePage() {
         </div>
 
         {/* Mascot Centerpiece */}
-        <div className="mt-14 flex justify-center">
+        <div className="mt-10 flex justify-center sm:mt-14">
           <div className="relative">
-            <MascotTeddy pose="standing" className="w-44 sm:w-56" />
+            <MascotTeddy pose="standing" className="w-36 sm:w-44 md:w-56" />
             <div className="absolute -top-3 -right-6 hidden sm:block rotate-6 rounded-2xl border-2 border-cocoa bg-milk px-3.5 py-1.5 shadow-[3px_3px_0px_#2a170e]">
               <span className="font-scrawl text-xs font-bold text-toffee-ink">
                 woof! meet the pups below ↓
@@ -109,7 +109,7 @@ export default function HomePage() {
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {/* Path 1: Local */}
-          <div className="tp-board relative flex flex-col justify-between overflow-hidden p-8 sm:p-10">
+          <div className="tp-board relative flex flex-col justify-between overflow-hidden p-6 sm:p-10">
             <div className="absolute -right-10 -top-10 size-40 rounded-full bg-honey-soft/30 blur-2xl pointer-events-none" />
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-honey-soft px-3 py-1 text-xs font-bold text-cocoa">
@@ -144,7 +144,7 @@ export default function HomePage() {
           </div>
 
           {/* Path 2: Imported */}
-          <div className="tp-board relative flex flex-col justify-between overflow-hidden p-8 sm:p-10 bg-[#fffdfb]">
+          <div className="tp-board relative flex flex-col justify-between overflow-hidden p-6 sm:p-10 bg-[#fffdfb]">
             <div className="absolute -right-10 -top-10 size-40 rounded-full bg-sky/30 blur-2xl pointer-events-none" />
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-sky/40 px-3 py-1 text-xs font-bold text-sky-deep">
@@ -322,7 +322,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 sm:gap-6">
+        <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-3 lg:grid-cols-4 sm:gap-6">
           {previewFamilies.map((pol, idx) => (
             <PolaroidCard
               key={pol.id}
@@ -334,7 +334,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 7: QUESTIONS ANSWERED (FAQ PREVIEW) */}
-      <section id="questions-title" className="tp-night gutter mx-auto max-w-4xl py-20 border-t border-cocoa/10">
+      <section id="questions-title" className="tp-night gutter mx-auto max-w-4xl py-14 sm:py-20 border-t border-cocoa/10">
         <div className="text-center">
           <p className="font-scrawl text-sm font-bold text-toffee-ink">clear answers</p>
           <h2 className="font-plush text-big mt-2 font-bold text-cocoa">
@@ -353,7 +353,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  className="flex w-full items-center justify-between gap-4 p-5 text-left font-plush text-lg font-bold text-cocoa hover:text-toffee-deep"
+                  className="flex w-full items-center justify-between gap-4 p-4 sm:p-5 text-left font-plush text-base sm:text-lg font-bold text-cocoa hover:text-toffee-deep"
                 >
                   <span>{faq.name}</span>
                   <ChevronDown
@@ -363,7 +363,7 @@ export default function HomePage() {
                   />
                 </button>
                 {isOpen && (
-                  <div className="border-t border-cocoa/10 px-5 pb-5 pt-3 text-cocoa-soft leading-relaxed text-[0.95rem]">
+                  <div className="border-t border-cocoa/10 px-4 pb-4 pt-3 sm:px-5 sm:pb-5 text-cocoa-soft leading-relaxed text-sm sm:text-[0.95rem]">
                     {faq.acceptedAnswer.text}
                   </div>
                 )}
@@ -380,8 +380,8 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 8: CTA BANNER */}
-      <section id="cta-title" className="tp-home gutter mx-auto max-w-[110rem] pb-24 pt-10">
-        <div className="relative overflow-hidden rounded-3xl border-2 border-cocoa bg-[#fffdf8] p-8 sm:p-14 md:p-16 text-center shadow-[6px_6px_0px_#2a170e]">
+      <section id="cta-title" className="tp-home gutter mx-auto max-w-[110rem] pb-20 sm:pb-24 pt-6 sm:pt-10">
+        <div className="relative overflow-hidden rounded-3xl border-2 border-cocoa bg-[#fffdf8] p-6 sm:p-14 md:p-16 text-center shadow-[6px_6px_0px_#2a170e]">
           <div className="absolute -left-16 -top-16 size-48 rounded-full bg-honey-soft/50 blur-3xl pointer-events-none" />
           <div className="absolute -right-16 -bottom-16 size-48 rounded-full bg-blush/40 blur-3xl pointer-events-none" />
 
