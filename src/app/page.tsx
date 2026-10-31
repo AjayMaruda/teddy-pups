@@ -8,6 +8,7 @@ import { familiesData } from "@/data/families";
 import PuppyCard from "@/components/PuppyCard";
 import PolaroidCard from "@/components/PolaroidCard";
 import MascotTeddy from "@/components/MascotTeddy";
+import HeroLineup from "@/components/HeroLineup";
 import LightboxModal from "@/components/LightboxModal";
 import { PawIcon, WhatsAppIcon } from "@/components/Header";
 import { Check, ShieldCheck, Plane, Award, HeartHandshake, ChevronDown, Sparkles } from "lucide-react";
@@ -26,12 +27,28 @@ export default function HomePage() {
   return (
     <div className="relative overflow-hidden">
       {/* SECTION 1: HERO SCENE */}
-      <section id="hero-title" className="tp-hero gutter mx-auto max-w-[110rem] pb-16 pt-8 sm:pb-24 sm:pt-16 md:pt-20">
-        <div className="flex flex-col items-center text-center">
+      <section
+        id="hero-title"
+        data-pup-scene="true"
+        data-tone="light"
+        className="tp-hero relative overflow-hidden flex flex-col justify-between"
+        style={{
+          "--sky-top": "#fffdf8",
+          "--sky-bottom": "#fff1d8",
+          "--quilt": "#fff1d8",
+        } as React.CSSProperties}
+        aria-labelledby="hero-title"
+      >
+        <span aria-hidden="true" className="tp-hero__sun pointer-events-none" />
+
+        <div className="tp-hero__copy gutter mx-auto max-w-[110rem] flex flex-col items-center text-center pt-8 sm:pt-12 md:pt-16 z-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-toffee/20 bg-honey-soft/40 px-3 py-1.5 shadow-sm sm:px-4">
             <PawIcon className="size-3 text-toffee" />
-            <span className="font-scrawl text-xs font-bold text-toffee-ink sm:text-sm">
+            <span className="font-scrawl text-xs font-bold text-toffee-ink sm:text-sm relative">
               every puppy is family
+              <svg viewBox="0 0 220 24" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-2.5 w-full text-toffee" aria-hidden="true">
+                <path d="M4 14c18-10 30 8 48-1s28-9 46 0 30 8 48-1 30-9 48 0 18 2 22 0" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </span>
           </div>
 
@@ -60,17 +77,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Mascot Centerpiece */}
-        <div className="mt-10 flex justify-center sm:mt-14">
-          <div className="relative">
-            <MascotTeddy pose="standing" className="w-36 sm:w-44 md:w-56" />
-            <div className="absolute -top-3 -right-6 hidden sm:block rotate-6 rounded-2xl border-2 border-cocoa bg-milk px-3.5 py-1.5 shadow-[3px_3px_0px_#2a170e]">
-              <span className="font-scrawl text-xs font-bold text-toffee-ink">
-                woof! meet the pups below ↓
-              </span>
-            </div>
-          </div>
-        </div>
+        {/* Hero Lineup Stage: Arched Puppy Windows, Mascot Centerpiece, and Scalloped Quilt */}
+        <HeroLineup />
       </section>
 
       {/* SECTION 2: MEET THE PUPS */}
